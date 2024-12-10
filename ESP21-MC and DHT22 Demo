@@ -75,9 +75,9 @@ void reconnect() {
     if (client.connect(clientId.c_str())) {
       Serial.println("Connected");
       // Once connected, publish an announcement...
-      client.publish("yogi45ai/mqtt", "yogi45ai");
+      client.publish("yogiai/mqtt", "yogiai");
       // ... and resubscribe
-      client.subscribe("yogi45ai/mqtt");
+      client.subscribe("yogiai/mqtt");
     } else {
       Serial.print("failed, rc=");
       Serial.print(client.state());
@@ -112,11 +112,11 @@ void loop() {
     String temp = String(data.temperature, 2);
     Serial.print("Temperature: ");
     Serial.println(temp);
-    client.publish("yogi45ai/temperature", temp.c_str());
+    client.publish("yogiai/temperature", temp.c_str());
     
     String hum = String(data.humidity, 1);
     Serial.print("Humidity: ");
     Serial.println(hum);
-    client.publish("yogi45ai/humidity", hum.c_str());
+    client.publish("yogiai/humidity", hum.c_str());
   }
 }
